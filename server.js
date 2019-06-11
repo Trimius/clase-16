@@ -1,9 +1,8 @@
 const express = require('express');
-const serveStatic = require('serve-static');
 const path = require('path');
 const app = express();
 
-const serveMiddleware = serveStatic(path.resolve(__dirname, 'static'));
+//const serveMiddleware = serveStatic(path.resolve(__dirname, 'static'));
 
 function rootHandler (req, res){
     res.send('Hello fucking World');
@@ -16,7 +15,7 @@ function searchHandler (req, res){
     res.send(req.query.q);
 }
 
-app.use('/assets', serveMiddleware);
+app.use('/assets', express.static('static'));
 
 app.all('/', rootHandler);
 
